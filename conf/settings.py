@@ -32,8 +32,9 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
-    'accounts.apps.AccountsConfig',
-    'contacts.apps.ContactsConfig',
+    'accounts.apps.AccountsConfig',#追加
+    'contacts.apps.ContactsConfig',#追加
+    "adminsite.apps.AdminsiteConfig",#追加
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -112,13 +113,19 @@ AUTH_PASSWORD_VALIDATORS = [
 
 # Internationalization
 # https://docs.djangoproject.com/en/3.2/topics/i18n/
-AUTH_USER_MODEL = 'accounts.CustomUser'
-EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
-DEFAULT_FROM_EMAIL = 'sample@internetacademy.co.jp'
+AUTH_USER_MODEL = 'accounts.CustomUser'#追加
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'#追加
+DEFAULT_FROM_EMAIL = 'sample@internetacademy.co.jp'#追加
+AUTHENTICATION_BACKENDS = (
+    'django.contrib.auth.backends.AllowAllUsersModelBackend',
+)#追加
+LOGIN_URL = '/adminsite/login/'#追加
+LOGIN_REDIRECT_URL = '/adminsite/home/'#追加
 
-LANGUAGE_CODE = 'ja'
 
-TIME_ZONE = 'Asia/Tokyo'
+LANGUAGE_CODE = 'ja'#変更
+
+TIME_ZONE = 'Asia/Tokyo'#変更
 
 USE_I18N = True
 
