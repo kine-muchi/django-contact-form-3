@@ -20,17 +20,19 @@ class IndividualContactConﬁrm(generic.FormView):
     form_class = IndividualContactForm
 
     def form_valid(self, form):
-        return render(self.request, 'contacts/individual_contact_conﬁrm.html', {'form': form})
+        return render(self.request, 'contacts/individual_contact_confirm.html', {'form': form})
 
     def form_invalid(self, form):
         return render(self.request, IndividualContactInput.template_name, {'form': form})
+
 
 class IndividualContactCreate(generic.CreateView):
-    form_class = IndividualContactForm
     success_url = reverse_lazy('contacts:form_send_complete')
+    form_class = IndividualContactForm
 
     def form_invalid(self, form):
         return render(self.request, IndividualContactInput.template_name, {'form': form})
+
 
     def form_valid(self, form):
         IndividualContact.email_users(form, 'sample@internetacademy.co.jp')
@@ -41,26 +43,29 @@ class CorporateContactInput(generic.FormView):
     template_name = 'contacts/corporate_contact_input.html'
     form_class = CorporateContactForm
 
+
     def form_valid(self, form):
         return render(self.request, CorporateContactInput.template_name, {'form': form})
 
 
 class CorporateContactConﬁrm(generic.FormView):
     form_class = CorporateContactForm
-
+    
     def form_valid(self, form):
-        return render(self.request, 'contacts/corporate_contact_conﬁrm.html', {'form': form})
-
+        return render(self.request, 'contacts/corporate_contact_confirm.html', {'form': form})
+    
+    
     def form_invalid(self, form):
         return render(self.request, CorporateContactInput.template_name, {'form': form})
-
 
 class CorporateContactCreate(generic.CreateView):
     form_class = CorporateContactForm
     success_url = reverse_lazy('contacts:form_send_complete')
 
+
     def form_invalid(self, form):
         return render(self.request, CorporateContactInput.template_name, {'form': form})
+    
     
     def form_valid(self, form):
         CorporateContact.email_users(form, 'sample@internetacademy.co.jp')

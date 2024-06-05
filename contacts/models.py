@@ -1,11 +1,6 @@
-# from django.db import models
-
-# Create your models here.
-
 from django.db import models
 from django.template.loader import get_template
 from accounts.models import CustomUser
-
 
 def contact_type_handler(contact_type):
     if not isinstance(contact_type, str):

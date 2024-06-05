@@ -32,8 +32,8 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
-    'accounts.apps.AccountsConfig',#追加
-    'contacts.apps.ContactsConfig',#追加
+    'accounts.apps.AccountsConfig',
+    'contacts.apps.ContactsConfig',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -57,6 +57,7 @@ ROOT_URLCONF = 'conf.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
+        # プロジェクトの直下にある `templates` ディレクトリにテンプレートファイルを保存する
         'DIRS': [os.path.join(BASE_DIR, 'templates')],
         'APP_DIRS': True,
         'OPTIONS': {
@@ -69,6 +70,7 @@ TEMPLATES = [
         },
     },
 ]
+
 
 WSGI_APPLICATION = 'conf.wsgi.application'
 
@@ -116,7 +118,7 @@ DEFAULT_FROM_EMAIL = 'sample@internetacademy.co.jp'
 
 LANGUAGE_CODE = 'ja'
 
-TIME_ZONE = 'Asis/Tokyo'
+TIME_ZONE = 'Asia/Tokyo'
 
 USE_I18N = True
 
